@@ -1,3 +1,4 @@
+""" Function for clean data """
 import argparse
 import pandas as pd
 
@@ -18,12 +19,14 @@ def clean_data(country):
     df_data['year'] = pd.to_numeric(df_data['year'], errors='coerce')
     df_data['value'] = pd.to_numeric(df_data['value'], errors='coerce')
     df_data = df_data.dropna(subset=['value'])
-    country_life_expectancy = df_data[df_data['region'] == country]
-    country_life_expectancy.to_csv(f"life_expectancy/data/{country.lower()}_life_expectancy.csv", index=False)
+    c_life_expec = df_data[df_data['region'] == country]
+    c_life_expec.to_csv(f"life_expectancy/data/{country.lower()}_life_expectancy.csv", index=False)
 
 if __name__ == "__main__":  # pragma: no cover
-    parser = argparse.ArgumentParser(description='Clean life expectancy data for a specific country.')
-    parser.add_argument('--country', default='PT', help='Country code for which data should be cleaned (default: PT)')
+    parser = argparse.ArgumentParser(description=
+                                     'Clean life expectancy data for a specific country.')
+    parser.add_argument('--country', default='PT',
+                        help='Country code for which data should be cleaned (default: PT)')
     args = parser.parse_args()
 
     clean_data(args.country)
