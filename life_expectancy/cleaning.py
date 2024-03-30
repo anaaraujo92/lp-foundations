@@ -21,10 +21,3 @@ def clean_data(country):
     df_data = df_data.dropna(subset=['value'])
     c_life_expec = df_data[df_data['region'] == country]
     c_life_expec.to_csv(f"life_expectancy/data/{country.lower()}_life_expectancy.csv", index=False)
-
-if __name__ == "__main__":  # pragma: no cover
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--country', default='PT')
-    args = parser.parse_args()
-
-    clean_data(args.country)
