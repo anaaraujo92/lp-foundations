@@ -19,21 +19,15 @@ def clean_data(country="PT"):
     df_melt.drop(columns=['unit,sex,age,geotime'], inplace=True)
     df_melt['year'] = df_melt['year'].str.extract(r'(\d+)').astype(int)
     df_melt['value'] = pd.to_numeric(df_melt['value'], errors='coerce')
-    
-    # Salvar o número total de linhas do DataFrame original
-    total_rows_original = df_melt.shape[0]
-    
     df_melt = df_melt.dropna(subset=['value'])
-    
-    # Verificar se o número de linhas do DataFrame limpo corresponde ao número total de linhas do DataFrame original
-    if df_melt.shape[0] != total_rows_original:
-        print(f"WARNING: Number of rows after cleaning ({df_melt.shape[0]}) is different from total number of rows in the original DataFrame ({total_rows_original})")
-    
     c_life_expec = df_melt[df_melt['region'] == country]
-    
-    # Ajustar índice e colunas para corresponder ao dataframe esperado
-    c_life_expec.columns = ['unit', 'sex', 'age', 'region', 'year', 'value']  # Renomear colunas
-    c_life_expec = c_life_expec[['unit', 'sex', 'age', 'region', 'year','value']]  # Reordenar colunas
-
-    c_life_expec.to_csv("life_expectancy/data/pt_life_expectancy.csv", index=False)  # Salvar sem índice
+    # adjust index and columns
+    c_life_expec.columns = ['unit', 'sex', 'age', 'region', 'year', 'value']
+    c_life_expec = c_life_expec[['unit', 'sex', 'age', 'region', 'year','value']]
+    c_life_expec.to_csv("life_expectancy/data/pt_life_expectancy.csv", index=False)
     return c_life_expec
+if __name__ == "__main__":  # pragma: no cover
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--country', default='PT')
+    args = parser.parse_args()
+    clean_data(args.country)
