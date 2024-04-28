@@ -1,3 +1,5 @@
+[![CI](https://github.com/anaaraujo92/lp-foundations/actions/workflows/ci.yml/badge.svg)](https://github.com/anaaraujo92/lp-foundations/actions/workflows/ci.yml)
+
 # Foundations Learning Path Assignments
 
 ## Introduction
