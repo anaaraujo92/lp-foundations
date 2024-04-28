@@ -8,7 +8,7 @@ def load_data(path):
     return df
 
 def clean_data(df, country="PT"):
-    """Clean the data to a specific country."""
+    """Clean the data to a specific country (country: str = "PT")."""
     df_melt = df.melt(id_vars=["unit,sex,age,geotime"],
                       var_name="year", value_name="value")
     df_melt[['unit', 'sex', 'age', 'region'
