@@ -5,7 +5,9 @@ def clean_data(df: pd.DataFrame, country: Region) -> pd.DataFrame:
     """Clean the data for a specific country."""
     df_copy = df.copy()
     df_copy.rename(columns={df_copy.columns[0]: 'unit,sex,age,geo_time'}, inplace=True)
-    df_copy[['unit', 'sex', 'age', 'geo_time']] = df_copy['unit,sex,age,geo_time'].str.split(',', expand=True)
+    df_copy[['unit', 'sex', 'age', 'geo_time']] = df_copy['unit,sex,age,geo_time'
+                                                          ].str.split(','
+    , expand=True)
     df_copy.drop('unit,sex,age,geo_time', axis=1, inplace=True)
     df_melted = df_copy.melt(id_vars=['unit', 'sex', 'age',
                                       'geo_time'], var_name='year', value_name='value')
