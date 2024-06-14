@@ -28,7 +28,8 @@ def eu_life_expectancy_raw_sample_expected() -> pandas.DataFrame:
 def expected_regions():
     """Fixture to get the list of the expected countries"""
     return [
-    'AT','FI','ES','EL','EE','DK','DE','CZ','CY','CH','BG','BE','FX','SK','SI',\
-    'SE','RO','PT','PL','NO','NL','LU','LT','IT','UK','IS','HU','IE','MT','MK','LI',\
-    'FR','RS','HR','LV','UA','TR','ME','AL','AZ','GE','BY','AM','MD','SM','RU','XK'
+        'AL', 'AM', 'AT', 'AZ', 'BE', 'BG', 'BY', 'CH', 'CY', 'CZ',  'DE', 'DK', 'EE', 'EL',
+        'ES', 'FI', 'FT', 'FR', 'FX', 'GE', 'HR', 'HU', 'IE', 'IS', 'IT', 'LI', 'LT', 'LU',
+        'LV', 'MD', 'ME', 'MK', 'MT', 'NL', 'NO', 'PL', 'PT', 'RO', 'RS', 'RU', 'SE','SI',
+        'SK', 'SM', 'TR', 'UA', 'UK', 'XK'
     ]

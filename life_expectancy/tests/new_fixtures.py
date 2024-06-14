@@ -14,7 +14,7 @@ def create_fixtures(country_code: str) -> None:
     Args:
         country_code (str): The country code to filter the data."""
     try:
-        country = Region[country_code.upper()]  # Convert to uppercase and get Region enum
+        country = Region[country_code.upper()]
     except KeyError:
         print(f"Error: Invalid country code '{country_code}'. Please provide a valid country code.")
         return
