@@ -33,3 +33,27 @@ def expected_regions():
         'LV', 'MD', 'ME', 'MK', 'MT', 'NL', 'NO', 'PL', 'PT', 'RO', 'RS', 'RU', 'SE','SI',
         'SK', 'SM', 'TR', 'UA', 'UK', 'XK'
     ]
+@pytest.fixture()
+def eu_life_expect_json() -> pandas.DataFrame:
+    """Fixture to load the expected raw data from json file"""
+    return pandas.read_json(Path(__file__).parent / "fixtures" / "eurostat_life_expect.json")
+
+@pytest.fixture
+def eu_life_expectancy_json_sample():
+    data = {
+        "country": ["PT", "PT", "PT"],
+        "life_expectancy": [81.0, 82.0, 83.0],
+        "year": [2017, 2018, 2019],
+        "flag": [None, None, None],
+        "flag_detail": [None, None, None]
+    }
+    return pandas.DataFrame(data)
+
+@pytest.fixture
+def eu_life_expectancy_json_sample_expected():
+    data = {
+        "region": ["PT", "PT", "PT"],
+        "value": [81.0, 82.0, 83.0],
+        "year": [2017, 2018, 2019]
+    }
+    return pandas.DataFrame(data)
